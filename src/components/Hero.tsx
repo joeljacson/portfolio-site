@@ -35,14 +35,13 @@ export const Hero = () => {
           <span className="text-cloud">BOOT_SEQUENCE_COMPLETE</span>
         </div>
 
-        {/* Name */}
-        <h1 className="font-tech text-[clamp(2.6rem,9vw,7rem)] leading-[0.95] tracking-tight">
+        {/* Name — single line, auto-scales to viewport */}
+        <h1 className="font-tech leading-[0.95] tracking-tight">
           <span className="block text-cloud/70 text-base md:text-lg mb-3 font-code tracking-[0.3em]">
             &gt; INITIALIZE_USER --
           </span>
-          <Typewriter text="JOEL JACSON" speed={120} delay={300} className="text-gradient" />
-          <span className="block text-primary mt-1">
-            <Typewriter text="J." speed={150} delay={1700} />
+          <span className="block whitespace-nowrap text-[clamp(1.4rem,7.5vw,6.5rem)]">
+            <Typewriter text="JOEL JACSON J." speed={110} delay={300} className="text-gradient" />
           </span>
         </h1>
 
