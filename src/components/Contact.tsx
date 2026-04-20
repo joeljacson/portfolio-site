@@ -21,26 +21,9 @@ export const Contact = () => {
     }, 2400);
   };
 
-  const Field = ({ label, name, type = "text", textarea = false }: { label: string; name: keyof typeof form; type?: string; textarea?: boolean }) => (
-    <label className="block">
-      <span className="font-code text-[10px] tracking-[0.25em] text-primary block mb-2">[{label}]</span>
-      {textarea ? (
-        <textarea
-          rows={5}
-          value={form[name]}
-          onChange={(e) => setForm({ ...form, [name]: e.target.value })}
-          className="w-full bg-transparent border-0 border-b border-border focus:border-primary outline-none py-2 font-code text-cloud resize-none transition-colors"
-        />
-      ) : (
-        <input
-          type={type}
-          value={form[name]}
-          onChange={(e) => setForm({ ...form, [name]: e.target.value })}
-          className="w-full bg-transparent border-0 border-b border-border focus:border-primary outline-none py-2 font-code text-cloud transition-colors"
-        />
-      )}
-    </label>
-  );
+  const inputCls =
+    "w-full bg-transparent border-0 border-b border-border focus:border-primary outline-none py-2 font-code text-cloud transition-colors";
+  const labelCls = "font-code text-[10px] tracking-[0.25em] text-primary block mb-2";
 
   return (
     <section id="contact" className="relative py-24 md:py-32">
@@ -90,9 +73,33 @@ export const Contact = () => {
 
           <form onSubmit={onSubmit} className="panel p-6 md:p-8 relative overflow-hidden">
             <div className="space-y-6">
-              <Field label="NAME" name="name" />
-              <Field label="EMAIL" name="email" type="email" />
-              <Field label="MESSAGE" name="message" textarea />
+              <label className="block">
+                <span className={labelCls}>[NAME]</span>
+                <input
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                  className={inputCls}
+                />
+              </label>
+              <label className="block">
+                <span className={labelCls}>[EMAIL]</span>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                  className={inputCls}
+                />
+              </label>
+              <label className="block">
+                <span className={labelCls}>[MESSAGE]</span>
+                <textarea
+                  rows={5}
+                  value={form.message}
+                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                  className={`${inputCls} resize-none`}
+                />
+              </label>
             </div>
 
             <button
