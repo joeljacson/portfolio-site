@@ -8,28 +8,42 @@ interface Props {
 }
 
 export const Typewriter = ({ text, speed = 90, delay = 200, className = "" }: Props) => {
-  const [out, setOut] = useState("");
+  const [revealed, setRevealed] = useState(false);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    let i = 0;
-    const start = setTimeout(() => {
-      const id = setInterval(() => {
-        i++;
-        setOut(text.slice(0, i));
-        if (i >= text.length) {
-          clearInterval(id);
-          setDone(true);
-        }
-      }, speed);
-    }, delay);
-    return () => clearTimeout(start);
+    const t1 = setTimeout(() => setRevealed(true), delay);
+    const total = delay + text.length * speed + 400;
+    const t2 = setTimeout(() => setDone(true), total);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, [text, speed, delay]);
 
   return (
     <span className={className}>
-      <span className="animate-flicker">{out}</span>
-      <span className={`inline-block w-[0.6ch] -mb-1 bg-primary ml-1 ${done ? "animate-blink" : ""}`} style={{ height: "0.9em" }} />
+      <span className="inline-flex">
+        {text.split("").map((ch, i) => (
+          <span
+            key={i}
+            className="inline-block transition-all duration-700 ease-out"
+            style={{
+              filter: revealed ? "blur(0px)" : "blur(14px)",
+              opacity: revealed ? 1 : 0,
+              transform: revealed ? "translateY(0)" : "translateY(8px)",
+              transitionDelay: `${i * speed}ms`,
+              whiteSpace: ch === " " ? "pre" : "normal",
+            }}
+          >
+            {ch}
+          </span>
+        ))}
+      </span>
+      <span
+        className={`inline-block w-[0.6ch] -mb-1 bg-primary ml-1 ${done ? "animate-blink" : ""}`}
+        style={{ height: "0.9em" }}
+      />
     </span>
   );
 };
