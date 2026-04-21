@@ -8,40 +8,48 @@ interface Props {
 }
 
 export const Typewriter = ({ text, speed = 90, delay = 200, className = "" }: Props) => {
-  const [revealed, setRevealed] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setRevealed(true), delay);
-    const total = delay + text.length * speed + 400;
-    const t2 = setTimeout(() => setDone(true), total);
+    const total = text.length * speed;
+    let raf = 0;
+    let startTs = 0;
+    const startTimer = setTimeout(() => {
+      const tick = (ts: number) => {
+        if (!startTs) startTs = ts;
+        const p = Math.min(1, (ts - startTs) / total);
+        setProgress(p);
+        if (p < 1) raf = requestAnimationFrame(tick);
+        else setDone(true);
+      };
+      raf = requestAnimationFrame(tick);
+    }, delay);
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
+      clearTimeout(startTimer);
+      cancelAnimationFrame(raf);
     };
   }, [text, speed, delay]);
 
+  const blur = (1 - progress) * 14;
+  const reveal = progress * 100;
+
   return (
-    <span className={className}>
-      <span className="inline-flex">
-        {text.split("").map((ch, i) => (
-          <span
-            key={i}
-            className="inline-block transition-all duration-700 ease-out"
-            style={{
-              filter: revealed ? "blur(0px)" : "blur(14px)",
-              opacity: revealed ? 1 : 0,
-              transform: revealed ? "translateY(0)" : "translateY(8px)",
-              transitionDelay: `${i * speed}ms`,
-              whiteSpace: ch === " " ? "pre" : "normal",
-            }}
-          >
-            {ch}
-          </span>
-        ))}
+    <span className="relative inline-block align-baseline">
+      <span
+        className={`inline-block ${className}`}
+        style={{
+          filter: `blur(${blur}px)`,
+          clipPath: `inset(0 ${100 - reveal}% 0 0)`,
+          WebkitClipPath: `inset(0 ${100 - reveal}% 0 0)`,
+          transition: "filter 80ms linear",
+          willChange: "filter, clip-path",
+        }}
+      >
+        {text}
       </span>
       <span
-        className={`inline-block w-[0.6ch] -mb-1 bg-primary ml-1 ${done ? "animate-blink" : ""}`}
+        className={`inline-block w-[0.6ch] -mb-1 bg-primary ml-1 align-baseline ${done ? "animate-blink" : ""}`}
         style={{ height: "0.9em" }}
       />
     </span>
