@@ -43,7 +43,7 @@ export const MusicToggle = () => {
       onClick={toggle}
       aria-label={playing ? "Pause ambient music" : "Play ambient music"}
       title={playing ? "Pause lo-fi" : "Play lo-fi"}
-      className="fixed bottom-6 right-6 z-50 group flex items-center justify-center w-14 h-14 rounded-full font-code text-primary-foreground shadow-[0_0_30px_hsl(210_100%_35%/0.6)] border border-primary/40 hover:scale-110 transition-transform"
+      className="fixed bottom-6 right-24 z-50 group flex items-center justify-center w-14 h-14 rounded-full font-code text-primary-foreground shadow-[0_0_30px_hsl(210_100%_35%/0.6)] border border-primary/40 hover:scale-110 transition-transform"
       style={{ background: "#185FA5" }}
     >
       {/* pulsing ring when playing */}
