@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Typewriter = ({ text, speed = 90, delay = 200, className = "" }: Props) => {
-  const [progress, setProgress] = useState(0); // 0 → 1
+  const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
@@ -20,11 +20,8 @@ export const Typewriter = ({ text, speed = 90, delay = 200, className = "" }: Pr
         if (!startTs) startTs = ts;
         const p = Math.min(1, (ts - startTs) / total);
         setProgress(p);
-        if (p < 1) {
-          raf = requestAnimationFrame(tick);
-        } else {
-          setDone(true);
-        }
+        if (p < 1) raf = requestAnimationFrame(tick);
+        else setDone(true);
       };
       raf = requestAnimationFrame(tick);
     }, delay);
@@ -38,9 +35,9 @@ export const Typewriter = ({ text, speed = 90, delay = 200, className = "" }: Pr
   const reveal = progress * 100;
 
   return (
-    <span className={`relative inline-block ${className}`}>
+    <span className="relative inline-block align-baseline">
       <span
-        className="inline-block"
+        className={`inline-block ${className}`}
         style={{
           filter: `blur(${blur}px)`,
           clipPath: `inset(0 ${100 - reveal}% 0 0)`,
