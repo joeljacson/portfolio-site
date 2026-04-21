@@ -6,6 +6,7 @@ import { Projects } from "@/components/Projects";
 import { Timeline } from "@/components/Timeline";
 import { Contact } from "@/components/Contact";
 import { ChatBot } from "@/components/ChatBot";
+import { MusicToggle } from "@/components/MusicToggle";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <Timeline />
       <Contact />
       <ChatBot />
+      <MusicToggle />
     </main>
   );
 };
