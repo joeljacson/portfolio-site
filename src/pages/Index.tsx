@@ -6,9 +6,10 @@ import { Projects } from "@/components/Projects";
 import { Timeline } from "@/components/Timeline";
 import { Contact } from "@/components/Contact";
 import { ChatBot } from "@/components/ChatBot";
-import { MusicToggle } from "@/components/MusicToggle";
+import { useClickSfx } from "@/hooks/useClickSfx";
 
 const Index = () => {
+  useClickSfx();
   return (
     <main className="relative min-h-screen">
       <Nav />
@@ -19,7 +20,6 @@ const Index = () => {
       <Timeline />
       <Contact />
       <ChatBot />
-      <MusicToggle />
     </main>
   );
 };
