@@ -8,7 +8,6 @@ const GROUPS = [
     items: [
       { name: "Python", level: 95 },
       { name: "JavaScript", level: 80 },
-      { name: "Java", level: 55 },
       { name: "SQL", level: 88 },
     ],
   },
@@ -28,17 +27,17 @@ const GROUPS = [
     items: [
       { name: "Django", level: 88 },
       { name: "Flask", level: 85 },
-      { name: "Spring Boot", level: 70 },
+      { name: "PostgreSQL", level: 86 },
       { name: "MySQL / SQLite", level: 90 },
     ],
   },
   {
-    title: "Data & AI",
+    title: "Data, AI & Automation",
     shade: "hsl(var(--deep))",
     items: [
       { name: "Pandas / ETL", level: 92 },
-      { name: "Playwright", level: 90 },
-      { name: "OpenAI / LangChain", level: 80 },
+      { name: "Playwright / Selenium", level: 90 },
+      { name: "LangChain / OpenAI", level: 85 },
       { name: "OpenCV / DeepFace", level: 75 },
     ],
   },
@@ -93,7 +92,7 @@ export const Skills = () => {
 
         {/* Tools chip row */}
         <div className="mt-12 flex flex-wrap gap-2">
-          {["Git", "GitHub", "Jupyter", "REST APIs", "ETL", "Task Scheduler", "BeautifulSoup", "Cuelinks API", "Prompt Eng."].map(
+          {["Git", "GitHub", "Jupyter", "REST APIs", "ETL", "Task Scheduler", "BeautifulSoup", "Cuelinks API", "Prompt Eng.", "n8n", "Zapier"].map(
             (t) => (
               <span key={t} className="px-3 py-1.5 border border-border bg-surface/50 font-code text-xs text-muted-foreground hover:border-primary hover:text-primary transition-colors">
                 {t}
