@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Resume } from "./Resume";
+import { FileText } from "lucide-react";
 
 const LINKS = [
   { href: "#about", label: "ABOUT" },
@@ -11,6 +13,7 @@ const LINKS = [
 export const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -44,6 +47,14 @@ export const Nav = () => {
             </a>
           ))}
         </nav>
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={() => setResumeOpen(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 border border-primary text-primary font-code text-xs tracking-widest uppercase hover:bg-primary hover:text-primary-foreground transition-colors rounded-sm"
+          >
+            <FileText className="w-3.5 h-3.5" /> Resume
+          </button>
+        </div>
         <button
           aria-label="menu"
           onClick={() => setOpen(!open)}
@@ -60,9 +71,16 @@ export const Nav = () => {
                 {l.label}
               </a>
             ))}
+            <button
+              onClick={() => { setOpen(false); setResumeOpen(true); }}
+              className="inline-flex items-center gap-2 text-primary self-start"
+            >
+              <FileText className="w-3.5 h-3.5" /> VIEW RESUME
+            </button>
           </nav>
         </div>
       )}
+      <Resume open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </header>
   );
 };
