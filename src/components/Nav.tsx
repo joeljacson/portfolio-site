@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Resume } from "./Resume";
+import { FileText } from "lucide-react";
 
 const LINKS = [
   { href: "#about", label: "ABOUT" },
@@ -11,6 +13,7 @@ const LINKS = [
 export const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
