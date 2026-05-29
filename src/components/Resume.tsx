@@ -74,9 +74,10 @@ export const Resume = ({ open, onClose }: ResumeProps) => {
         {/* Skills */}
         <Section title="Technical Skills">
           <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-[10px]">
-            <SkillRow label="Languages" value="Python, JavaScript, Java, SQL" />
-            <SkillRow label="Backend" value="Django, Flask, Spring Boot, REST APIs" />
-            <SkillRow label="Data & AI" value="Pandas, Playwright, LangChain, OpenAI, OpenCV, DeepFace" />
+            <SkillRow label="Languages" value="Python, JavaScript, SQL" />
+            <SkillRow label="Backend" value="Django, Flask, REST APIs, PostgreSQL" />
+            <SkillRow label="Data & AI" value="Pandas, ETL, LangChain, OpenAI, OpenCV, DeepFace" />
+            <SkillRow label="Automation" value="Playwright, Selenium, n8n, Zapier, Task Scheduler" />
             <SkillRow label="Databases" value="MySQL, SQLite, PostgreSQL" />
             <SkillRow label="Frontend" value="HTML/CSS, JavaScript, Streamlit, Figma" />
             <SkillRow label="Tools" value="Git, GitHub, Jupyter, BeautifulSoup, Task Scheduler" />
