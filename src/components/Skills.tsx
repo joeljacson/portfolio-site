@@ -92,7 +92,7 @@ export const Skills = () => {
 
         {/* Tools chip row */}
         <div className="mt-12 flex flex-wrap gap-2">
-          {["Git", "GitHub", "Jupyter", "REST APIs", "ETL", "Task Scheduler", "BeautifulSoup", "Cuelinks API", "Prompt Eng.", "n8n", "Zapier"].map(
+          {["Git", "GitHub", "Jupyter", "REST APIs", "ETL", "Task Scheduler", "BeautifulSoup", "Cuelinks API", "Prompt Eng.", "n8n", "Zapier", "Claude", "Gemini", "Cursor"].map(
             (t) => (
               <span key={t} className="px-3 py-1.5 border border-border bg-surface/50 font-code text-xs text-muted-foreground hover:border-primary hover:text-primary transition-colors">
                 {t}

@@ -80,6 +80,7 @@ export const Resume = ({ open, onClose }: ResumeProps) => {
             <SkillRow label="Automation" value="Playwright, Selenium, n8n, Zapier, Task Scheduler" />
             <SkillRow label="Databases" value="MySQL, SQLite, PostgreSQL" />
             <SkillRow label="Frontend" value="HTML/CSS, JavaScript, Streamlit, Figma" />
+            <SkillRow label="AI Tools" value="Claude, Gemini, Cursor, Prompt Engineering" />
             <SkillRow label="Tools" value="Git, GitHub, Jupyter, BeautifulSoup, Task Scheduler" />
           </div>
         </Section>
